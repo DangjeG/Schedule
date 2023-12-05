@@ -16,7 +16,7 @@ class LessonsAdapter : RecyclerView.Adapter<LessonsAdapter.LessonsViewHolder>() 
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Lesson) = with(binding) {
-            var formatter: SimpleDateFormat = SimpleDateFormat("HH:mm")
+            val formatter: SimpleDateFormat = SimpleDateFormat("HH:mm")
             startView.text = formatter.format(item.start)
             endView.text = formatter.format(item.end)
             titleView.text = item.title
@@ -43,5 +43,6 @@ class LessonsAdapter : RecyclerView.Adapter<LessonsAdapter.LessonsViewHolder>() 
     fun submitList(list: ArrayList<Lesson>) {
         this.list.clear()
         this.list.addAll(list)
+        notifyDataSetChanged()
     }
 }

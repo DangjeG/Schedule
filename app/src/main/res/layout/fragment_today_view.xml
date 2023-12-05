@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,19 +8,70 @@
     tools:context=".screens.TodayViewFragment">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/topPanel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#232323"
+            android:orientation="horizontal">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/weekMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#232323"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/week_menu" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/weekDayView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="2dp"
+                    tools:text="TextView"
+                    android:textColor="#ebebed" />
+
+                <TextView
+                    android:id="@+id/groupView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="2dp"
+                    tools:text="TextView"
+                    android:textColor="#7c7c7c"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         app:cardBackgroundColor="#232323"
-        android:layout_marginTop="25dp"
         app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@id/topPanel">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,21 +82,12 @@
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/dayView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginVertical="2dp"
-                android:textColor="#ebebed"
-                android:textSize="12sp"
-                tools:text="TextView" />
-
-            <TextView
                 android:id="@+id/infoView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:layout_marginVertical="2dp"
+                android:textColor="#ebebed"
                 android:textSize="12sp"
                 tools:text="TextView" />
 
@@ -60,4 +102,4 @@
 
     </androidx.cardview.widget.CardView>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

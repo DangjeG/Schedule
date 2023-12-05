@@ -32,30 +32,10 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         changeTab(R.id.nav_host)
 
-        binding?.weekMenu?.setOnMenuItemClickListener {
-            changeWeak(it.itemId)
-            true
-        }
+
         binding?.bottomAppBar?.setOnItemSelectedListener {
             changeTab(it.itemId)
             true
-        }
-
-
-
-        changeTab(R.id.navigation_day)
-    }
-
-
-    private fun changeWeak(@IdRes id: Int){
-        when(id) {
-            R.id.first_week -> {
-                weekNumber = WeekNumber.First
-            }
-
-            R.id.second_week -> {
-                weekNumber = WeekNumber.Second
-            }
         }
         changeTab(R.id.navigation_day)
     }
@@ -66,10 +46,10 @@ class MainFragment : Fragment() {
         val transaction = childFragmentManager.beginTransaction()
         when (id) {
             R.id.navigation_day ->
-                transaction.replace(navHostId, TodayViewFragment.newInstance(storage.getDay(weekNumber)))
+                transaction.replace(navHostId, TodayViewFragment.newInstance())
 
             R.id.navigation_week ->
-                transaction.replace(navHostId, WeekListFragment.newInstance(storage.getWeek(weekNumber)))
+                transaction.replace(navHostId, WeekListFragment.newInstance())
         }
         transaction.commit()
     }

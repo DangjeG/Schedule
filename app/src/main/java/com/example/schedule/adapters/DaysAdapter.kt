@@ -48,5 +48,6 @@ class DaysAdapter : RecyclerView.Adapter<DaysAdapter.DaysViewHolder>() {
     fun submitList(list: ArrayList<Day>) {
         this.list.clear()
         this.list.addAll(list)
+        notifyDataSetChanged()
     }
 }
